@@ -1,0 +1,46 @@
+{% extends 'my_todo_app/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+ Home Todo APP
+{% endblock %}
+
+{% block content %}
+{% include 'my_todo_app/navbar.html' %}
+
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-2">
+        <!--    empty div    -->
+        </div>
+        <div class="col-md-7 col-offset ">
+            <div class="card justify-content-center">
+                <div class="card-header" style="background-color:#778899; color:white;">
+                    <center><strong>STAFF RECORD SYSTEM...</strong></center>
+                    {% include 'my_todo_app/messages.html' %}
+                </div><br>
+                <div class="header-body">
+
+                    <form role="form" method="post" autocomplete="off" action="">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{form.firstname|as_crispy_field}}
+                                {{form.email|as_crispy_field}}
+                            </div>
+                            <div class="col-md-6">
+                                {{form.phone|as_crispy_field}}
+                                {{form.position|as_crispy_field}}
+                            </div>
+                        </div>
+                        <button class="btn btn-sm btn-success" type="submit" >submit</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'my_todo_app/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+ Home Todo APP Login
+{% endblock %}
+
+{% block content %}
+
+{% include 'my_todo_app/navbar.html' %}
+<br>
+{% if user.is_empty %}
+{% else %}
+
+
+
+{% endif %}
+<div class="container">
+    <br>
+   <div class="row" >
+    <div class="col-md-3 "></div>
+       <div class="col-md-5 ">
+         <div class="card justify-content-center">
+             <div class="card-header" style="background-color:#20B2AA; color:white">
+                 <center><strong>LOGIN...</strong></center>
+             </div>
+
+            <center style="color:red; font-weight:bold">  {% include 'my_todo_app/messages.html' %}</center>
+
+             <div class="header-body">
+             <form method="post" action="{% url 'my_todo_app:user_login' %}" style="mardin:50px">
+              {% csrf_token %}
+              <div class="form-group">
+                   {{form.username|as_crispy_field}}
+              </div>
+
+              <div class="form-group">
+                {{form.password|as_crispy_field}}
+              </div>
+              <div class="card card-footer" style="background-color:#20B2AA">
+               <button class="btn btn-sm" style="color:white"><strong>Login</strong></button>
+              </div>
+             </form>
+          </div>
+         </div>
+   </div>
+</div>
+
+
+{% endblock %}

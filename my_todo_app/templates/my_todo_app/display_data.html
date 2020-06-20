@@ -1,0 +1,49 @@
+{%  extends 'my_todo_app/base.html' %}
+
+{% block title %}
+    display Records
+{% endblock %}
+
+{% block content %}
+{% include 'my_todo_app/navbar.html' %}
+<!--{% include 'my_todo_app/navbar.html' %}-->
+
+<div class="container">
+    <br>
+    <div class="col-md">
+        <div class="card justify-content-center">
+            <div class="card-header" style="background-color:#778899; color:white;">
+                <center><h3>STAFF MANAGEMENT SYSTEM..</h3></center>
+                <a href="{% url 'my_todo_app:insert_data' %}" class="btn btn-sm btn-success">Add Record</a>
+            </div>
+
+            {% include 'my_todo_app/messages.html' %}
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Firstname</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Position</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                {% for display in displays %}
+                  <tr class="success">
+                    <td>{{ display.firstname }}</td>
+                    <td>{{ display.email }}</td>
+                    <td>{{ display.phone }}</td>
+                    <td>{{ display.position }}</td>
+                      <td><a href="{% url 'my_todo_app:update_data' display.id %}" class="btn btn-sm btn-info">Update</a></td>
+                      <td><a href="{% url 'my_todo_app:delete_data' display.id %}" class="btn btn-sm btn-danger">delete</a></td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+</div>
+
+</body>
+
+{% endblock %}
